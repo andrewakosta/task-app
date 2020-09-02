@@ -1,7 +1,17 @@
 import React from 'react';
+import Sidbar from '../layouts/Sidebar';
 const Projects = () => {
     return ( 
-        <h1>From Projects</h1>
+        <div className="contenedor-app">
+            <Sidbar/>
+            <div className="seccion-principal">
+                <main>
+                    <div className="contenedor-tareas">
+
+                    </div>
+                </main>
+            </div>
+        </div>
      );
 }
  
