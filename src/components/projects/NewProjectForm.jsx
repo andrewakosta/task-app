@@ -1,5 +1,24 @@
-import React from 'react'
+import React, {useState} from 'react'
+
 const NewProjectForm = () => {
+ 
+    const [project, saveProject] = useState({
+        name:''
+    })
+
+    const {name} = project
+
+    const handleInput = e => {
+        saveProject({
+            ...project,
+            [e.target.name]:e.target.value
+        })
+    }
+    const handleSubmit = e =>{
+        e.preventDefault()
+
+    }
+
     return ( 
         <>
             <button
@@ -10,12 +29,15 @@ const NewProjectForm = () => {
             </button>
             <form 
                 className='formulario-nuevo-proyecto'
+                onSubmit={handleSubmit}
             >
                 <input 
                     type="text"
                     className='input-text'
                     placeholder='Name of Project'
                     name='name'
+                    value={name}
+                    onChange={handleInput}
                 />
                 <input 
                     type="submit"
