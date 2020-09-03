@@ -6,7 +6,7 @@ const NewProjectForm = () => {
     
     //Get state fof form 
    
-    const {form, showForm, addProject}  = useContext(ContextProject)
+    const {form, showForm, errorForm, showError, addProject}  = useContext(ContextProject)
 
     const [project, saveProject] = useState({
         name:''
@@ -23,6 +23,7 @@ const NewProjectForm = () => {
     const handleSubmit = e =>{
         e.preventDefault()
         if(name.length===0){
+            showError()
             return
         }
         addProject(project)
@@ -30,7 +31,7 @@ const NewProjectForm = () => {
             name:''
         })
     }
-
+    console.log(errorForm)
     return ( 
         <>
             <button
@@ -65,6 +66,14 @@ const NewProjectForm = () => {
             : 
                 null
             }
+            {
+                errorForm
+            ?
+                <p className='alert-error'>The name of the project is mandatory</p>
+            :
+                null    
+            }
+
         </>
      );
 }

@@ -15,7 +15,7 @@ const idRandom = ()=>{
 
         let letter = letters[index]
 
-        console.log(index)
+     
 
 
         if(i % 2 === 0){
@@ -24,7 +24,7 @@ const idRandom = ()=>{
 
         id += letter
     }
-    console.log(id)
+ 
     return id
 }
 

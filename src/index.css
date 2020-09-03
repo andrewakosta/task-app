@@ -360,7 +360,10 @@ aside  {
   background-color: rgb(109, 211, 109);
   color: rgb(2, 103, 2);
 }
-.alerta-error {
-  background-color: rgb(230, 78, 78);
-  color: var(--blanco);
+.alert-error {
+  padding: 8px;
+  border: rgb(228, 142, 142) 1px solid;
+  color: rgb(247, 85, 85);
+  border-radius: 4px;
+  background-color: rgb(250, 217, 217);
 }

@@ -6,7 +6,8 @@ import ReducerProject from './ReducerProject'
 import {
         FORM_PROJECT,
         GET_PROJECTS,
-        ADD_PROJECT
+        ADD_PROJECT,
+        FORM_VALIDATE
         } from '../../types'
 
 const StateProject = props =>{
@@ -19,7 +20,8 @@ const StateProject = props =>{
     ]
     const initialState = {
         form:false,
-        projects : []
+        projects : [],
+        errorForm:false
     } 
     //Dispatch to execute the actions
     const [state, dispatch] = useReducer(ReducerProject, initialState) 
@@ -44,14 +46,23 @@ const StateProject = props =>{
             payload:project
         })
     }
+    //Show error of empty field on name field
+    const showError=()=>{
+        dispatch({
+            type:FORM_VALIDATE
+        })
+    }
     return (
         <ContextProject.Provider
             value={{
                 form:state.form,
+                errorForm:state.errorForm,
+                projects: state.projects,
+                //Functions
                 showForm,
                 getProjects,
                 addProject,
-                projects: state.projects
+                showError    
             }}
         >  
             {props.children}
