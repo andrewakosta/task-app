@@ -1,9 +1,13 @@
 import React from 'react'
 
+import StateProject from './context/projects/StateProject'
 import AppRouter from './routers/AppRouter'
 const App = () => {
     return ( 
-        <AppRouter/>
+        <StateProject>
+            <AppRouter/>      
+        </StateProject>
+
      );
 }
  
