@@ -20,7 +20,6 @@ const ListTasks = () => {
                 : 
                     tasks.map(task => (
                         <Task 
-                            key={task}
                             task={task}
                         />
                     ))
