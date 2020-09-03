@@ -1,4 +1,5 @@
 import React from 'react';
+import ListTasks from '../tasks/ListTasks'
 import Sidbar from '../layouts/Sidebar';
 import Navbar from '../layouts/Navbar';
 import TaskForm from '../tasks/TaskForm';
@@ -11,7 +12,7 @@ const Projects = () => {
                 <main>
                      <TaskForm/>
                     <div className="contenedor-tareas">
-
+                        <ListTasks/>
                     </div>
                 </main>
             </div>
