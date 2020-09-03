@@ -3,9 +3,9 @@ import React, {useReducer} from 'react';
 import ContextProject from './ContexProject'
 import ReducerProject from './ReducerProject'
 
-const StateProject =props=>{
+const StateProject = props =>{
     const initialState = {
-        form:false
+        form:true
     } 
     //Dispatch to execute the actions
     const [state, dispatch] = useReducer(ReducerProject, initialState) 

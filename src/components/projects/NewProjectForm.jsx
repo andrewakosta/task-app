@@ -1,7 +1,17 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
+import ContextProject from '../../context/projects/ContexProject'
+
 
 const NewProjectForm = () => {
- 
+    
+    //Get state fof form 
+   
+    const ContextProyect_ = useContext(ContextProject)
+
+   
+    const  {form} = ContextProyect_
+    console.log(form)
+
     const [project, saveProject] = useState({
         name:''
     })
@@ -27,10 +37,13 @@ const NewProjectForm = () => {
             >
                 New Project
             </button>
-            <form 
+            {
+                form 
+            ?
+                <form 
                 className='formulario-nuevo-proyecto'
                 onSubmit={handleSubmit}
-            >
+                >
                 <input 
                     type="text"
                     className='input-text'
@@ -46,6 +59,9 @@ const NewProjectForm = () => {
                 />
 
             </form>
+            : 
+                null
+            }
         </>
      );
 }

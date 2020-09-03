@@ -5,7 +5,7 @@ import AppRouter from './routers/AppRouter'
 const App = () => {
     return ( 
         <StateProject>
-            <AppRouter/>      
+            <AppRouter/>
         </StateProject>
 
      );
