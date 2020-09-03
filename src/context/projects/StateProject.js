@@ -1,19 +1,21 @@
 import React, {useReducer} from 'react';
 
+import idRandom from '../../helpers/getIdRamdom'
 import ContextProject from './ContexProject'
 import ReducerProject from './ReducerProject'
 import {
         FORM_PROJECT,
-        GET_PROJECTS
+        GET_PROJECTS,
+        ADD_PROJECT
         } from '../../types'
 
 const StateProject = props =>{
     const projects = [
-        {id:1, name:'MongoDB'},
-        {id:2, name:'Java EE'},
-        {id:3,name:'React js'},
-        {id:4,name:'Node js'},
-        {id:5,name:'Python 3.7'}
+        {id:idRandom(), name:'MongoDB'},
+        {id:idRandom(), name:'Java EE'},
+        {id:idRandom(),name:'React js'},
+        {id:idRandom(),name:'Node js'},
+        {id:idRandom(),name:'Python 3.7'}
     ]
     const initialState = {
         form:false,
@@ -35,12 +37,20 @@ const StateProject = props =>{
             payload:projects
         })
     }
+    const addProject = project => {
+        project.id= idRandom()
+        dispatch({
+            type:ADD_PROJECT,
+            payload:project
+        })
+    }
     return (
         <ContextProject.Provider
             value={{
                 form:state.form,
                 showForm,
                 getProjects,
+                addProject,
                 projects: state.projects
             }}
         >  

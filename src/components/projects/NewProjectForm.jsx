@@ -6,11 +6,8 @@ const NewProjectForm = () => {
     
     //Get state fof form 
    
-    const ContextProyect_ = useContext(ContextProject)
+    const {form, showForm, addProject}  = useContext(ContextProject)
 
-   
-    const  {form, showForm} = ContextProyect_
-  
     const [project, saveProject] = useState({
         name:''
     })
@@ -25,7 +22,13 @@ const NewProjectForm = () => {
     }
     const handleSubmit = e =>{
         e.preventDefault()
-
+        if(name.length===0){
+            return
+        }
+        addProject(project)
+        saveProject({
+            name:''
+        })
     }
 
     return ( 
