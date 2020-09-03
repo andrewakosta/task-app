@@ -6,7 +6,14 @@ import {FORM_PROJECT} from '../../types'
 
 const StateProject = props =>{
     const initialState = {
-        form:false
+        form:false,
+        projects : [
+            {id:1, name:'MongoDB'},
+            {id:2, name:'Java EE'},
+            {id:3,name:'React js'},
+            {id:4,name:'Node js'},
+            {id:5,name:'Python 3.7'}
+        ]
     } 
     //Dispatch to execute the actions
     const [state, dispatch] = useReducer(ReducerProject, initialState) 
@@ -21,7 +28,8 @@ const StateProject = props =>{
         <ContextProject.Provider
             value={{
                 form:state.form,
-                showForm
+                showForm,
+                projects: state.projects
             }}
         >  
             {props.children}

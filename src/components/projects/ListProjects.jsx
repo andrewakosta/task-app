@@ -1,16 +1,18 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import Projec from './Project';
+
+import StateProject from '../../context/projects/ContexProject'
 const ListProjects = () => {
-    const projects = [
-        {name:'MongoDB'},
-        {name:'Java EE'},
-        {name:'React js'},
-        {name:'Node js'}
-    ]
+
+    const {projects} = useContext(StateProject)
+
     return ( 
         <ul className='listado-proyectos'>
             {projects.map( project => (
-                <Projec project={project}/>
+                <Projec
+                    key={project.id} 
+                    project={project}
+                />
             ))}
         </ul>
      );

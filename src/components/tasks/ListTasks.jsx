@@ -19,7 +19,10 @@ const ListTasks = () => {
                     )
                 : 
                     tasks.map(task => (
-                        <Task task={task}/>
+                        <Task 
+                            key={task}
+                            task={task}
+                        />
                     ))
                 } 
             </ul>
