@@ -1,7 +1,7 @@
 import React, {useContext, useEffect} from 'react'
 import Projec from './Project';
 
-import StateProject from '../../context/projects/ContexProject'
+import StateProject from '../../context/projects/ContextProject'
 const ListProjects = () => {
 
     const {projects, getProjects} = useContext(StateProject)

@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react'
-import ContextProject from '../../context/projects/ContexProject'
+import ContextProject from '../../context/projects/ContextProject'
 
 
 const NewProjectForm = () => {
@@ -31,7 +31,7 @@ const NewProjectForm = () => {
             name:''
         })
     }
-    console.log(errorForm)
+    
     return ( 
         <>
             <button
