@@ -3,9 +3,9 @@ import React from 'react'
 import Task from './Task'
 const ListTasks = () => {
     const tasks = [
-        {name:'Choose the server', status:true},
+        {name:'Choose the server', status:false},
         {name:'add every coder to buil porject', status:true},
-        {name:'make the desing to porejct', status:true}
+        {name:'make the desing to porejct', status:false}
     ]
     return ( 
         <>
@@ -21,8 +21,14 @@ const ListTasks = () => {
                     tasks.map(task => (
                         <Task task={task}/>
                     ))
-                }
+                } 
             </ul>
+            <button
+                type='button'
+                className='btn btn-eliminar'
+            >
+                Delete Project
+            </button>
         </>
      );
 }

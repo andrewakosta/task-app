@@ -89,6 +89,12 @@ a {
   display: block;
   background-color: transparent;
 }
+.btn-eliminar{
+  background-color:rgb(226, 205, 205);
+  color: rgb(104, 63, 63);
+  font-weight: bold;
+  float: right;
+}
 
 @media (min-width: 768px) {
   .contenedor-app {
