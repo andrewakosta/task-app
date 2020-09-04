@@ -4,7 +4,7 @@ import ContextProject from '../../context/projects/ContextProject'
 import Task from './Task'
 const ListTasks = () => {
 
-    const {currentProject} =  useContext(ContextProject)
+    const {currentProject, deleteProject} =  useContext(ContextProject)
     if(!currentProject){
         return <h2>Please choose one project</h2>
     } 
@@ -15,7 +15,9 @@ const ListTasks = () => {
         {name:'add every coder to buil porject', status:true},
         {name:'make the desing to porejct', status:false}
     ]
-   
+    const deleteProject_= () => {
+        deleteProject(project.id)
+    }
     return ( 
         <>
             <h2>{project.name}</h2>
@@ -37,6 +39,7 @@ const ListTasks = () => {
             <button
                 type='button'
                 className='btn btn-eliminar'
+                onClick={deleteProject_}
             >
                 Delete Project
             </button>

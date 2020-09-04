@@ -10,7 +10,7 @@ const ListProjects = () => {
 
         getProjects()
     },[])
-    
+    if(projects.length===0)return <h3 className='message-g'>Make a project</h3>
     return ( 
         <ul className='listado-proyectos'>
             {projects.map( project => (
