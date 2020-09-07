@@ -5,7 +5,10 @@ import {
 export default (state, action ) => {
     switch (action.type){
         case PROJECT_TASKS:
-            console.log(action.payload)
+            return {
+                ...state,
+                projectTasks: state.tasks.filter(task => action.payload === task.projectId)
+            }
         default:
             return state
     }

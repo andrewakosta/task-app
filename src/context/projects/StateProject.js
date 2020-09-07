@@ -14,11 +14,10 @@ import {
 
 const StateProject = props =>{
     const projects = [
-        {id:idRandom(), name:'MongoDB'},
-        {id:idRandom(), name:'Java EE'},
-        {id:idRandom(),name:'React js'},
-        {id:idRandom(),name:'Node js'},
-        {id:idRandom(),name:'Python 3.7'}
+        {id:1, name:'MongoDB'},
+        {id:2, name:'Java EE'},
+        {id:3,name:'React js'},
+        {id:4,name:'Node js'},
     ]
     const initialState = {
         form:false,
