@@ -10,11 +10,7 @@ const ListTasks = () => {
     } 
     const [project] = currentProject
     //List tasks
-    const tasks = [
-        {name:'Choose the server', status:false},
-        {name:'add every coder to buil porject', status:true},
-        {name:'make the desing to porejct', status:false}
-    ]
+    const tasks = []
     const deleteProject_= () => {
         deleteProject(project.id)
     }
