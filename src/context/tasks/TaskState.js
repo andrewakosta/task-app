@@ -7,7 +7,8 @@ import {
     ADD_TASK,
     ERROR_TASK,
     DELETE_TASK,
-    STATUS_TASK
+    STATUS_TASK,
+    SET_CURRENT_TASK
 } from '../../types/index'
 
 
@@ -40,7 +41,8 @@ const TaskState = props => {
             {id:randomId(),  name:'make the desing to porejct', status:false, projectId:2}
         ],
         projectTasks:null,
-        errorStatus:false
+        errorStatus:false,
+        currentTask:null
     }
 
     const [state, dispatch] =  useReducer(TaskReducer, initialState)
@@ -83,6 +85,13 @@ const TaskState = props => {
             payload:task
         })
     }
+    //Set a current task 
+    const setCurrentTask = task => {
+        dispatch({
+            type:SET_CURRENT_TASK,
+            payload:task
+        })
+    }
     return (
         <TaskContext.Provider
             value= {{
@@ -93,7 +102,8 @@ const TaskState = props => {
                 addTask,
                 errorTask,
                 deleteTaskById,
-                changeStatusTask
+                changeStatusTask,
+                setCurrentTask
             }}
         >
             {props.children}

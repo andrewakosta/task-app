@@ -1,9 +1,14 @@
 import {
-    PROJECT_TASKS, ADD_TASK, ERROR_TASK, DELETE_TASK, STATUS_TASK
+    PROJECT_TASKS, ADD_TASK, ERROR_TASK, DELETE_TASK, STATUS_TASK, SET_CURRENT_TASK
 } from '../../types'
 
 export default (state, action ) => {
     switch (action.type){
+        case SET_CURRENT_TASK:
+            return {
+                ...state,
+                currentTask:action.payload
+            }
         case STATUS_TASK:
             return {
                 ...state,
@@ -15,7 +20,6 @@ export default (state, action ) => {
                 tasks: state.tasks.filter(task => task.id !== action.payload)
             }
         case ADD_TASK:
-            console.log(action.payload)
             return {
                 ...state,
                 tasks:[
@@ -23,7 +27,6 @@ export default (state, action ) => {
                     ...state.tasks                   
                 ],
                 errorStatus:false
-            
             }
         case PROJECT_TASKS:
             return {

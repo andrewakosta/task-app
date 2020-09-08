@@ -6,7 +6,7 @@ import ContextProject from '../../context/projects/ContextProject'
 const Task = ({task}) => {
     const {currentProject} = useContext(ContextProject)
 
-    const {deleteTaskById, getTasks, changeStatusTask} = useContext(TaskContext)
+    const {deleteTaskById, getTasks, changeStatusTask, setCurrentTask} = useContext(TaskContext)
     //Delete a task
     const deleteTask = id => {
         deleteTaskById(id)
@@ -20,6 +20,10 @@ const Task = ({task}) => {
           task.status = true
         }
         changeStatusTask(task)
+    }
+    //edit a task
+    const editTask = task => {
+        setCurrentTask(task)
     }
     return ( 
         <li className='tarea sombra'>
@@ -50,6 +54,7 @@ const Task = ({task}) => {
                 <button
                     className='btn btn-primario'
                     type='button'
+                    onClick={()=> editTask(task)}
                 >
                     Edit
                 </button>
