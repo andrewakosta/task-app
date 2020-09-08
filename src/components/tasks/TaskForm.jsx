@@ -1,12 +1,21 @@
-import React, {useContext, useState} from 'react'
+import React, {useContext, useState, useEffect} from 'react'
 
 import ContextProject from '../../context/projects/ContextProject'
 import TaskContext from '../../context/tasks/TaskContext'
 const TaskForm = () => {
 
     const {currentProject} = useContext(ContextProject) 
-    const {addTask, errorTask, errorStatus, getTasks} = useContext(TaskContext) 
-    
+    const {addTask, errorTask, errorStatus, currentTask, getTasks} = useContext(TaskContext) 
+    //Effect which detect if there is one task selected
+    useEffect(()=> {
+        if(currentTask !== null){
+            setTask(currentTask)
+        }else{
+            setTask({
+                name:''
+            })
+        }
+    },[currentTask])
     //Local state
     const [task, setTask] = useState({
         name:''
@@ -55,7 +64,7 @@ const TaskForm = () => {
                     <input 
                         type="submit" 
                         className='btn btn-primario btn-submit btn-block'
-                        value='Add Task '
+                        value={currentTask ? 'Edit task': 'Add task'}
                     />
                 </div>
                 

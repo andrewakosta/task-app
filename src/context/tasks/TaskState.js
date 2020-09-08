@@ -98,6 +98,7 @@ const TaskState = props => {
                 tasks:state.tasks,
                 projectTasks: state.projectTasks,
                 errorStatus:state.errorStatus,
+                currentTask:state.currentTask,
                 getTasks,
                 addTask,
                 errorTask,
