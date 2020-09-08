@@ -11,4 +11,5 @@ export const PROJECT_TASKS = 'PROJECT_TASKS'
 export const ADD_TASK = 'ADD_TASK'
 export const ERROR_TASK = 'ERROR_TASK'
 export const DELETE_TASK = 'DELETE_TASK'
+export const STATUS_TASK = 'STATUS_TASK'
 
