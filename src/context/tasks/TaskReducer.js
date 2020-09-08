@@ -1,9 +1,14 @@
 import {
-    PROJECT_TASKS, ADD_TASK, ERROR_TASK
+    PROJECT_TASKS, ADD_TASK, ERROR_TASK, DELETE_TASK
 } from '../../types'
 
 export default (state, action ) => {
     switch (action.type){
+        case DELETE_TASK:
+            return {
+                ...state,
+                tasks: state.tasks.filter(task => task.id !== action.payload)
+            }
         case ADD_TASK:
             console.log(action.payload)
             return {

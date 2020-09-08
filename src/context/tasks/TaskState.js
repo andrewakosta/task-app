@@ -1,41 +1,42 @@
 import React, { useReducer } from 'react'
-
+import randomId from '../../helpers/getIdRamdom'
 import TaskReducer from './TaskReducer'
 import TaskContext from './TaskContext'
 import {
     PROJECT_TASKS,
     ADD_TASK,
-    ERROR_TASK
+    ERROR_TASK,
+    DELETE_TASK
 } from '../../types/index'
 
 
 const TaskState = props => {
     const initialState = {
         tasks:[
-            {name:'Choose the server', status:false, projectId:1},
-            {name:'add every coder to buil porject', status:true,projectId:2},
-            {name:'make the desing to porejct', status:false, projectId:3},
-            {name:'Choose the server', status:false, projectId:4},
-            {name:'add every coder to buil porject', status:true, projectId:2},
-            {name:'make the desing to porejct', status:false, projectId:2},
-            {name:'Choose the server', status:false, projectId:1},
-            {name:'add every coder to buil porject', status:true,projectId:2},
-            {name:'make the desing to porejct', status:false, projectId:3},
-            {name:'Choose the server', status:false, projectId:1},
-            {name:'add every coder to buil porject', status:true, projectId:3},
-            {name:'make the desing to porejct', status:false, projectId:2},
-            {name:'Choose the server', status:false, projectId:3},
-            {name:'add every coder to buil porject', status:true,projectId:1},
-            {name:'make the desing to porejct', status:false, projectId:4},
-            {name:'Choose the server', status:false, projectId:2},
-            {name:'add every coder to buil porject', status:true, projectId:1},
-            {name:'make the desing to porejct', status:false, projectId:2},
-            {name:'Choose the server', status:false, projectId:4},
-            {name:'add every coder to buil porject', status:true,projectId:1},
-            {name:'make the desing to porejct', status:false, projectId:2},
-            {name:'Choose the server', status:false, projectId:3},
-            {name:'add every coder to buil porject', status:true, projectId:3},
-            {name:'make the desing to porejct', status:false, projectId:2}
+            {id:randomId(),  name:'Choose the server', status:false, projectId:1},
+            {id:randomId(),  name:'add every coder to buil porject', status:true,projectId:2},
+            {id:randomId(),  name:'make the desing to porejct', status:false, projectId:3},
+            {id:randomId(),  name:'Choose the server', status:false, projectId:4},
+            {id:randomId(),  name:'add every coder to buil porject', status:true, projectId:2},
+            {id:randomId(),  name:'make the desing to porejct', status:false, projectId:2},
+            {id:randomId(),  name:'Choose the server', status:false, projectId:1},
+            {id:randomId(),  name:'add every coder to buil porject', status:true,projectId:2},
+            {id:randomId(),  name:'make the desing to porejct', status:false, projectId:3},
+            {id:randomId(),  name:'Choose the server', status:false, projectId:1},
+            {id:randomId(),  name:'add every coder to buil porject', status:true, projectId:3},
+            {id:randomId(),  name:'make the desing to porejct', status:false, projectId:2},
+            {id:randomId(),  name:'Choose the server', status:false, projectId:3},
+            {id:randomId(),  name:'add every coder to buil porject', status:true,projectId:1},
+            {id:randomId(),  name:'make the desing to porejct', status:false, projectId:4},
+            {id:randomId(),  name:'Choose the server', status:false, projectId:2},
+            {id:randomId(),  name:'add every coder to buil porject', status:true, projectId:1},
+            {id:randomId(),  name:'make the desing to porejct', status:false, projectId:2},
+            {id:randomId(),  name:'Choose the server', status:false, projectId:4},
+            {id:randomId(),  name:'add every coder to buil porject', status:true,projectId:1},
+            {id:randomId(),  name:'make the desing to porejct', status:false, projectId:2},
+            {id:randomId(),  name:'Choose the server', status:false, projectId:3},
+            {id:randomId(),  name:'add every coder to buil porject', status:true, projectId:3},
+            {id:randomId(),  name:'make the desing to porejct', status:false, projectId:2}
         ],
         projectTasks:null,
         errorStatus:false
@@ -45,6 +46,7 @@ const TaskState = props => {
 
     //Get tasks
     const getTasks = projectId =>{
+        console.log(projectId)
         dispatch({
             type:PROJECT_TASKS,
             payload:projectId
@@ -55,12 +57,22 @@ const TaskState = props => {
         
         dispatch({
             type:ADD_TASK,
-            payload:task
+            payload:{
+                ...task,
+                id:randomId()
+            }
         })
     }
     const errorTask = () => {
         dispatch({
             type:ERROR_TASK,
+        })
+    }
+    //delete a task by ID
+    const deleteTaskById = taskId => {
+        dispatch({
+            type:DELETE_TASK,
+            payload:taskId
         })
     }
     return (
@@ -71,7 +83,8 @@ const TaskState = props => {
                 errorStatus:state.errorStatus,
                 getTasks,
                 addTask,
-                errorTask
+                errorTask,
+                deleteTaskById
             }}
         >
             {props.children}

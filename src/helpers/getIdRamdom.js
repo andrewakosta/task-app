@@ -1,4 +1,4 @@
-const idRandom = ()=>{
+const randomId = ()=>{
     let id = ''
     const letters =[
         'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s',
@@ -28,4 +28,4 @@ const idRandom = ()=>{
     return id
 }
 
-export default idRandom
+export default randomId
