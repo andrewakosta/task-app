@@ -5,7 +5,7 @@ import TaskContext from '../../context/tasks/TaskContext'
 const TaskForm = () => {
 
     const {currentProject} = useContext(ContextProject) 
-    const {addTask, errorTask, errorStatus, currentTask, getTasks} = useContext(TaskContext) 
+    const {addTask, errorTask, errorStatus, currentTask, getTasks, updateTask} = useContext(TaskContext) 
     //Effect which detect if there is one task selected
     useEffect(()=> {
         if(currentTask !== null){
@@ -27,26 +27,33 @@ const TaskForm = () => {
     //Handle the changes on the input
     const handleChange = e =>{
         setTask({
+            ...task,
             [e.target.name]:e.target.value
         })
     } 
     const [project] = currentProject
+
     const handleSubmit = e =>{
         e.preventDefault()
         if(name.trim()=== ''){
             errorTask()
             return
         }
-        addTask({
-            ...task,
-            status:false,
-            projectId:project.id
-        })
+        if(currentTask === null){
+            addTask({
+                ...task,
+                status:false,
+                projectId:project.id
+            })
+        }else{
+            updateTask(task)
+        }
         setTask({
             name:''
         })
         getTasks(project.id)
     }
+    
     return ( 
         <div className="formulario">
             <form  onSubmit={handleSubmit}>

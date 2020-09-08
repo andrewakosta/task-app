@@ -8,7 +8,8 @@ import {
     ERROR_TASK,
     DELETE_TASK,
     STATUS_TASK,
-    SET_CURRENT_TASK
+    SET_CURRENT_TASK,
+    UPDATE_TASK
 } from '../../types/index'
 
 
@@ -49,7 +50,6 @@ const TaskState = props => {
 
     //Get tasks
     const getTasks = projectId =>{
-        console.log(projectId)
         dispatch({
             type:PROJECT_TASKS,
             payload:projectId
@@ -92,6 +92,12 @@ const TaskState = props => {
             payload:task
         })
     }
+    const updateTask = task => {
+        dispatch({
+            type:UPDATE_TASK,
+            payload:task
+        })
+    }
     return (
         <TaskContext.Provider
             value= {{
@@ -104,7 +110,8 @@ const TaskState = props => {
                 errorTask,
                 deleteTaskById,
                 changeStatusTask,
-                setCurrentTask
+                setCurrentTask,
+                updateTask
             }}
         >
             {props.children}
