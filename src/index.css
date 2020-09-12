@@ -362,10 +362,13 @@ aside  {
 }
 .alert-error {
   padding: 8px;
+  margin-bottom: 8px;
   border: rgb(228, 142, 142) 1px solid;
   color: rgb(247, 85, 85);
   border-radius: 4px;
   background-color: rgb(250, 217, 217);
+  width: 100%;
+
 }
 .message-g{
   color:rgb(26, 78, 26)

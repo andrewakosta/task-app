@@ -1,8 +1,10 @@
-import React,{useState} from 'react'
+import React,{useState, useContext} from 'react'
+import alertContext from '../../context/alerts/alertContext'
 import {Link} from 'react-router-dom'
 
-const Register= () => {
 
+const Register= () => {
+    const {alert, showAlert} = useContext(alertContext)
     const [user, setUser] = useState({
         name:'',
         email:'',
@@ -20,12 +22,41 @@ const Register= () => {
     }
     const handleSubmit = e => {
         e.preventDefault()
-        console.log(email, password, passwordConfirm, name)
+        
+        //Check for empty fields
+        if( name.trim() === '' ||
+            email.trim() ==='' ||
+            password.trim() === '' ||
+            passwordConfirm === '' ){
+
+                showAlert('Every field is madatory', 'alert-error')
+                return
+        }
+        //Password must have more than six characters
+        if(password.length < 6){
+            showAlert('The password must have more than six cahracters', 'alert-error')
+        }
+       //The passwords must be the same
+        if(password !== passwordConfirm){
+            showAlert('The password must be the same', 'alert-error')
+            return
+        }
+        
+
     }
     return ( 
         <div className="form-usuario">
             <div className="contenedor-form sombra-dark">
                 <h1>Register</h1>
+                {
+                    alert 
+                ?
+                    (
+                        <div className={`alert ${alert.category}`}>{alert.msg}</div>
+                    )
+                :
+                    null 
+                }                
                 <form  onSubmit={handleSubmit}>
                     <div className="campo-form">
                         <label htmlFor="name">Name</label>

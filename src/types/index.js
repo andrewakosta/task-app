@@ -15,3 +15,7 @@ export const STATUS_TASK = 'STATUS_TASK'
 export const SET_CURRENT_TASK = 'SET_CURRENT_TASK'
 export const UPDATE_TASK = 'UPDATE_TASK'
 
+//Alerts
+export const SHOW_ALERT = 'SHOW_ALERT'
+export const HIDDE_ALERT = 'HIDDE_ALERT'
+

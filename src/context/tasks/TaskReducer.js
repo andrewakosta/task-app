@@ -14,7 +14,8 @@ export default (state, action ) => {
             console.log(action.payload)
             return {
                 ...state,
-                tasks:state.tasks.map(task => task.id === action.payload.id ? action.payload:task)
+                tasks:state.tasks.map(task => task.id === action.payload.id ? action.payload:task),
+                currentTask:null
             }
         case DELETE_TASK:
             return {
