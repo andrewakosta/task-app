@@ -19,3 +19,10 @@ export const UPDATE_TASK = 'UPDATE_TASK'
 export const SHOW_ALERT = 'SHOW_ALERT'
 export const HIDDE_ALERT = 'HIDDE_ALERT'
 
+//Authentication
+export const SSUCCESFUL_REGISTER = 'SUCCESFUL_REGISTER'
+export const ERROR_REGISTER = 'ERROR_REGISTER'
+export const GET_USER = 'GET_USER'
+export const SSUCCESFUL_LOGIN = 'SSUCCESFUL_LOGIN'
+export const ERROR_LOGIN = 'ERROR_LOGIN'
+export const LOGOUT = 'LOGOUT'
