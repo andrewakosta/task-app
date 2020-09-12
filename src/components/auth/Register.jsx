@@ -1,10 +1,16 @@
 import React,{useState, useContext} from 'react'
 import alertContext from '../../context/alerts/alertContext'
+import authContext from '../../context/auth/authContext'
 import {Link} from 'react-router-dom'
 
 
 const Register= () => {
+
+    //Context
     const {alert, showAlert} = useContext(alertContext)
+    const {registerUser} = useContext(authContext)
+
+
     const [user, setUser] = useState({
         name:'',
         email:'',
@@ -42,6 +48,11 @@ const Register= () => {
             return
         }
         
+        registerUser({
+            name,
+            email,
+            password
+        })
 
     }
     return ( 
