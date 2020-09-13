@@ -42,6 +42,20 @@ const AuthState = props => {
             })
         }
     }
+    //Return the user authenticated
+    const userAuthenticated = async () => {
+        const token = localStorage.getItem('token')
+        if(token){
+
+        }
+        try {
+            const response = await clientAxios.get('/api/auth')
+        } catch (error) {
+            dispatch({
+                type:ERROR_LOGIN
+            })
+        }
+    }
     return (
         <authContext.Provider
             value={{

@@ -16,7 +16,9 @@ export default (state, action) => {
                 authenticated:true,
                 message:null
             }
-        case ERROR_REGISTER:  
+        case ERROR_LOGIN:    
+        case ERROR_REGISTER: 
+            localStorage.removeItem('token')
             return{
                 ...state, 
                 token: null,
