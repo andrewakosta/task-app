@@ -23,7 +23,7 @@ export default (state, action) => {
                 user:action.payload
             }    
         case ERROR_LOGIN:    
-        case ERROR_REGISTER: 
+        case ERROR_REGISTER:
             localStorage.removeItem('token')
             return{
                 ...state, 

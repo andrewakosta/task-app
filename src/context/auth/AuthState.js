@@ -47,18 +47,22 @@ const AuthState = props => {
     }
     //Return the user authenticated
     const userAuthenticated = async () => {
+    
         const token = localStorage.getItem('token')
+
         if(token){
             tokenAuth(token)
         }
         try {
+            //Get user authenticate
             const response = await clientAxios.get('/api/auth')
-            console.log(response)
+         
             dispatch({
                 type:GET_USER,
                 payload:response.data.user
             })
         } catch (error) {
+            console.log(error.response.data.msg)
             dispatch({
                 type:ERROR_LOGIN
             })
@@ -95,7 +99,8 @@ const AuthState = props => {
                 user:state.user,
                 message:state.message,
                 registerUser, 
-                initSeccion
+                initSeccion,
+                userAuthenticated
             }}
         >
             {props.children}
