@@ -1,7 +1,17 @@
-import React,{useState} from 'react'
+import React,{useState, useContext} from 'react'
 import {Link} from 'react-router-dom'
 
+import authContext from '../../context/auth/authContext'
+import alertContext from '../../context/alerts/alertContext'
+
 const Login = () => {
+
+    //Extract vlues from context
+    const {alert, showAlert} = useContext(alertContext)
+
+    const {message, authenticated, initSeccion } = useContext(authContext)
+
+
 
     const [user, setUser] = useState({
         email:'',
@@ -17,13 +27,29 @@ const Login = () => {
         })
     }
     const handleSubmit = e => {
-        e.preventDeafault()
-        console.log(email, password)
+        e.preventDefault()
+        
+        if(email.trim() === '' || password.trim() === ''){
+            showAlert('Every fields are mandaroy', 'alert-error')
+        }
+        initSeccion({
+            email, 
+            password
+        })
     }
     return ( 
         <div className="form-usuario">
             <div className="contenedor-form sombra-dark">
                 <h1>Log in</h1>
+                {
+                    alert 
+                ?
+                    (
+                        <div className={`alert ${alert.category}`}>{alert.msg}</div>
+                    )
+                :
+                    null 
+                } 
                 <form  onSubmit={handleSubmit}>
                     <div className="campo-form">
                         <label htmlFor="email">E-mail</label>
