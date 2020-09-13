@@ -12,6 +12,7 @@ import {
     SET_CURRENT_TASK,
     UPDATE_TASK
 } from '../../types/index'
+import Axios from 'axios'
 
 
 const TaskState = props => {
@@ -55,11 +56,16 @@ const TaskState = props => {
         })
     }
     //delete a task by ID
-    const deleteTaskById = taskId => {
-        dispatch({
-            type:DELETE_TASK,
-            payload:taskId
-        })
+    const deleteTaskById = async (id, project )=> {
+        try{
+            await clientAxios.delete(`/api/tasks/${id}`, {params:{project}})
+            dispatch({
+                type:DELETE_TASK,
+                payload: id
+            })
+        }catch(error){
+            console.log(error)
+        }
     }
     //Change status to a task
     const changeStatusTask = task => {
