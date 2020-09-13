@@ -2,6 +2,7 @@ import React, {useReducer} from 'react'
 import authContext from './authContext'
 import authReducer from './authReducer'
 import clientAxios  from '../../config/axios'
+import tokenAuth from '../../config/tokenAuth'
 import {
     SSUCCESFUL_LOGIN,
     SSUCCESFUL_REGISTER,
@@ -30,6 +31,8 @@ const AuthState = props => {
                 type:SSUCCESFUL_REGISTER,
                 payload:response.data
             })
+            //Get User
+            userAuthenticated()
         }catch(error){
             const alert = {
                 msg:error.response.data.msg,
@@ -46,10 +49,14 @@ const AuthState = props => {
     const userAuthenticated = async () => {
         const token = localStorage.getItem('token')
         if(token){
-
+            tokenAuth(token)
         }
         try {
             const response = await clientAxios.get('/api/auth')
+            dispatch({
+                type:GET_USER,
+                payload:response.data.user
+            })
         } catch (error) {
             dispatch({
                 type:ERROR_LOGIN
