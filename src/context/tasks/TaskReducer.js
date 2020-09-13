@@ -9,11 +9,11 @@ export default (state, action ) => {
                 ...state,
                 currentTask:action.payload
             }
-        case UPDATE_TASK:    
-        case STATUS_TASK:
+        case UPDATE_TASK:
+            console.log(action.payload)    
             return {
                 ...state,
-                projectTasks:state.projectTasks.map(task => task._id === action.payload.id ? action.payload:task),
+                projectTasks:state.projectTasks.map(task => task._id === action.payload._id ? action.payload:task),
                 currentTask:null
             }
         case DELETE_TASK:

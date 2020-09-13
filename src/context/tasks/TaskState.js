@@ -67,13 +67,6 @@ const TaskState = props => {
             console.log(error)
         }
     }
-    //Change status to a task
-    const changeStatusTask = task => {
-        dispatch({
-            type:STATUS_TASK,
-            payload:task
-        })
-    }
     //Set a current task 
     const setCurrentTask = task => {
         dispatch({
@@ -81,11 +74,17 @@ const TaskState = props => {
             payload:task
         })
     }
-    const updateTask = task => {
-        dispatch({
-            type:UPDATE_TASK,
-            payload:task
-        })
+    const updateTask = async task => {
+        try {
+            const response = await clientAxios.put('/api/tasks/'+task._id, task)
+            console.log(response)
+            dispatch({
+                type:UPDATE_TASK,
+                payload:response.data
+            })
+        } catch (error) {
+            console.log(error)
+        }
     }
     return (
         <TaskContext.Provider
@@ -97,7 +96,6 @@ const TaskState = props => {
                 addTask,
                 errorTask,
                 deleteTaskById,
-                changeStatusTask,
                 setCurrentTask,
                 updateTask
             }}

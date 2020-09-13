@@ -6,7 +6,7 @@ import ContextProject from '../../context/projects/ContextProject'
 const Task = ({task}) => {
     const {currentProject} = useContext(ContextProject)
 
-    const {deleteTaskById, getTasks, changeStatusTask, setCurrentTask} = useContext(TaskContext)
+    const {deleteTaskById, getTasks, updateTask, setCurrentTask} = useContext(TaskContext)
     //Delete a task
     const deleteTask = id => {
         deleteTaskById(id, currentProject[0]._id)
@@ -19,7 +19,7 @@ const Task = ({task}) => {
         }else {
           task.status = true
         }
-        changeStatusTask(task)
+        updateTask(task)
     }
     //edit a task
     const editTask = task => {
