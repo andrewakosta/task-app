@@ -1,5 +1,4 @@
 import React, { useReducer } from 'react'
-import randomId from '../../helpers/getIdRamdom'
 import TaskReducer from './TaskReducer'
 import TaskContext from './TaskContext'
 import clientAxios from '../../config/axios'
@@ -8,11 +7,9 @@ import {
     ADD_TASK,
     ERROR_TASK,
     DELETE_TASK,
-    STATUS_TASK,
     SET_CURRENT_TASK,
     UPDATE_TASK
 } from '../../types/index'
-import Axios from 'axios'
 
 
 const TaskState = props => {

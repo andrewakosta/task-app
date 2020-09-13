@@ -1,7 +1,6 @@
 import React, {useContext, useEffect} from 'react'
 
 import authContext from '../../context/auth/authContext'
-import { LOGOUT } from '../../types'
 
 const Navbar = () => {
 
@@ -9,6 +8,7 @@ const Navbar = () => {
     const {user, userAuthenticated, logout} = useContext(authContext)
     useEffect(()=> {
         userAuthenticated()
+        //eslint-disable-next-line
     },[])
     return ( 
         <header className='app-header'>

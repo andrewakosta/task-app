@@ -1,6 +1,6 @@
 import React, {useReducer} from 'react';
 
-import idRandom from '../../helpers/getIdRamdom'
+
 import ContextProject from './ContextProject'
 import ReducerProject from './ReducerProject'
 import clientAxios from '../../config/axios'
@@ -14,12 +14,6 @@ import {
         } from '../../types'
 
 const StateProject = props =>{
-    const projects = [
-        {id:1, name:'MongoDB'},
-        {id:2, name:'Java EE'},
-        {id:3,name:'React js'},
-        {id:4,name:'Node js'},
-    ]
     const initialState = {
         form:false,
         projects : [],

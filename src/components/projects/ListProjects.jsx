@@ -9,6 +9,7 @@ const ListProjects = () => {
     useEffect(() => {
 
         getProjects()
+        //eslint-disable-next-line
     },[])
     if(projects.length===0)return <h3 className='message-g'>Make a project</h3>
     return ( 

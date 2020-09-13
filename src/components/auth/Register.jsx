@@ -17,7 +17,8 @@ const Register= (props) => {
         if(message){
             showAlert(message.msg, message.category)
         }
-    },[message, authenticated, props.history])
+        //eslint-disable-next-line
+    },[ message, authenticated, props.history,])
 
     const [user, setUser] = useState({
         name:'',
