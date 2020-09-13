@@ -376,3 +376,8 @@ aside  {
 .mt-5{
   margin-top: 10px;
 }
+.logout{
+  color: #cec0c0;
+  font-weight: bold;
+  font-size: 2rem;
+}
