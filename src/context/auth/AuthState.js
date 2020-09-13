@@ -69,7 +69,11 @@ const AuthState = props => {
     const initSeccion  = async data => {
         try{
             const resposne = await clientAxios.post('/api/auth', data)
-            console.log(resposne)
+            dispatch({
+                type:SSUCCESFUL_LOGIN, 
+                payload:resposne.data
+            })
+            userAuthenticated()
         }catch(error){
             console.log(error.response.data.msg)
             const alert = {
