@@ -33,7 +33,7 @@ export default (state, action ) => {
         case PROJECT_TASKS:
             return {
                 ...state,
-                projectTasks: state.projectTasks.filter(task => action.payload === task.projectId),
+                projectTasks: action.payload
             }
         case ERROR_TASK: 
             return {
