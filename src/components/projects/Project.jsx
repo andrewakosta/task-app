@@ -4,14 +4,14 @@ import ContextProject from '../../context/projects/ContextProject'
 import TaskContext from '../../context/tasks/TaskContext'
 
 
-const Projec = ({project}) => {
+const Project = ({project}) => {
     const {getTasks} = useContext(TaskContext)
     const {setCurrentProject} = useContext(ContextProject)
 
     //Handle the click on the button 
     const handleClick = () => {
-        setCurrentProject(project.id)
-        getTasks(project.id)
+        setCurrentProject(project._id)
+        getTasks(project._id)
     }
     return ( 
         <li>
@@ -26,4 +26,4 @@ const Projec = ({project}) => {
      );
 }
  
-export default Projec;
+export default Project;

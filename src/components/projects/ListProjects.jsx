@@ -1,5 +1,5 @@
 import React, {useContext, useEffect} from 'react'
-import Projec from './Project';
+import Project from './Project';
 
 import StateProject from '../../context/projects/ContextProject'
 const ListProjects = () => {
@@ -14,7 +14,7 @@ const ListProjects = () => {
     return ( 
         <ul className='listado-proyectos'>
             {projects.map( project => (
-                <Projec
+                <Project
                     key={project._id} 
                     project={project}
                 />

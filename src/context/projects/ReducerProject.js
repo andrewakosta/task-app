@@ -38,7 +38,7 @@ export default (state, action) => {
         case CURRENT_PROJECT:
             return{
                 ...state,
-                currentProject:state.projects.filter( project => project.id === action.payload)
+                currentProject:state.projects.filter( project => project._id === action.payload)
             }  
         case DELETE_PROJECT:
             console.log(state.projects)
