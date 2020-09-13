@@ -2,6 +2,7 @@ import React, { useReducer } from 'react'
 import randomId from '../../helpers/getIdRamdom'
 import TaskReducer from './TaskReducer'
 import TaskContext from './TaskContext'
+import clientAxios from '../../config/axios'
 import {
     PROJECT_TASKS,
     ADD_TASK,
@@ -15,33 +16,7 @@ import {
 
 const TaskState = props => {
     const initialState = {
-        tasks:[
-            {id:randomId(),  name:'Choose the server', status:false, projectId:1},
-            {id:randomId(),  name:'add every coder to buil porject', status:true,projectId:2},
-            {id:randomId(),  name:'make the desing to porejct', status:false, projectId:3},
-            {id:randomId(),  name:'Choose the server', status:false, projectId:4},
-            {id:randomId(),  name:'add every coder to buil porject', status:true, projectId:2},
-            {id:randomId(),  name:'make the desing to porejct', status:false, projectId:2},
-            {id:randomId(),  name:'Choose the server', status:false, projectId:1},
-            {id:randomId(),  name:'add every coder to buil porject', status:true,projectId:2},
-            {id:randomId(),  name:'make the desing to porejct', status:false, projectId:3},
-            {id:randomId(),  name:'Choose the server', status:false, projectId:1},
-            {id:randomId(),  name:'add every coder to buil porject', status:true, projectId:3},
-            {id:randomId(),  name:'make the desing to porejct', status:false, projectId:2},
-            {id:randomId(),  name:'Choose the server', status:false, projectId:3},
-            {id:randomId(),  name:'add every coder to buil porject', status:true,projectId:1},
-            {id:randomId(),  name:'make the desing to porejct', status:false, projectId:4},
-            {id:randomId(),  name:'Choose the server', status:false, projectId:2},
-            {id:randomId(),  name:'add every coder to buil porject', status:true, projectId:1},
-            {id:randomId(),  name:'make the desing to porejct', status:false, projectId:2},
-            {id:randomId(),  name:'Choose the server', status:false, projectId:4},
-            {id:randomId(),  name:'add every coder to buil porject', status:true,projectId:1},
-            {id:randomId(),  name:'make the desing to porejct', status:false, projectId:2},
-            {id:randomId(),  name:'Choose the server', status:false, projectId:3},
-            {id:randomId(),  name:'add every coder to buil porject', status:true, projectId:3},
-            {id:randomId(),  name:'make the desing to porejct', status:false, projectId:2}
-        ],
-        projectTasks:null,
+        projectTasks:[],
         errorStatus:false,
         currentTask:null
     }
@@ -56,15 +31,18 @@ const TaskState = props => {
         })
     }
     //Add task
-    const addTask = task => {
-        
-        dispatch({
-            type:ADD_TASK,
-            payload:{
-                ...task,
-                id:randomId()
-            }
-        })
+    const addTask = async task => {
+        try {
+            console.log(task)
+            const response  = await clientAxios.post('/api/tasks', task)
+            console.log(response)
+            dispatch({
+                type:ADD_TASK,
+                payload:task
+            })
+        } catch (error) {
+            console.log('Maldita sea a donde se fue el objecto')
+        }
     }
     const errorTask = () => {
         dispatch({
@@ -101,7 +79,6 @@ const TaskState = props => {
     return (
         <TaskContext.Provider
             value= {{
-                tasks:state.tasks,
                 projectTasks: state.projectTasks,
                 errorStatus:state.errorStatus,
                 currentTask:state.currentTask,

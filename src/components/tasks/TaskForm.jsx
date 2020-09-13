@@ -43,7 +43,7 @@ const TaskForm = () => {
             addTask({
                 ...task,
                 status:false,
-                projectId:project.id
+                project:project._id
             })
         }else{
             updateTask(task)
@@ -51,7 +51,7 @@ const TaskForm = () => {
         setTask({
             name:''
         })
-        getTasks(project.id)
+        getTasks(project._id)
     }
     
     return ( 

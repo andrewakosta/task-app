@@ -9,7 +9,6 @@ const ListTasks = () => {
 
     const {currentProject, deleteProject} =  useContext(ContextProject)
     const {projectTasks} = useContext(TaskContext)
-    console.log(currentProject)
     if(!currentProject){
         return <h2>Please choose one project</h2>
     } 

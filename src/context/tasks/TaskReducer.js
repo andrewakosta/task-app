@@ -11,30 +11,29 @@ export default (state, action ) => {
             }
         case UPDATE_TASK:    
         case STATUS_TASK:
-            console.log(action.payload)
             return {
                 ...state,
-                tasks:state.tasks.map(task => task.id === action.payload.id ? action.payload:task),
+                projectTasks:state.projectTasks.map(task => task._id === action.payload.id ? action.payload:task),
                 currentTask:null
             }
         case DELETE_TASK:
             return {
                 ...state,
-                tasks: state.tasks.filter(task => task.id !== action.payload)
+                tasks: state.projectTasks.filter(task => task._id !== action.payload)
             }
         case ADD_TASK:
             return {
                 ...state,
-                tasks:[
+                projectTasks:[
                     action.payload,
-                    ...state.tasks                   
+                    ...state.projectTasks                   
                 ],
                 errorStatus:false
             }
         case PROJECT_TASKS:
             return {
                 ...state,
-                projectTasks: state.tasks.filter(task => action.payload === task.projectId),
+                projectTasks: state.projectTasks.filter(task => action.payload === task.projectId),
             }
         case ERROR_TASK: 
             return {
