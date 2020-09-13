@@ -3,6 +3,7 @@ import React, {useReducer} from 'react';
 import idRandom from '../../helpers/getIdRamdom'
 import ContextProject from './ContextProject'
 import ReducerProject from './ReducerProject'
+import clientAxios from '../../config/axios'
 import {
         FORM_PROJECT,
         GET_PROJECTS,
@@ -35,18 +36,31 @@ const StateProject = props =>{
         })
     }
     //Get projects
-    const getProjects = () => {
-        dispatch({
-            type:GET_PROJECTS,
-            payload:projects
-        })
+    const getProjects = async() => {
+
+        try {
+            const response = await clientAxios.get('/api/projects')
+            
+            dispatch({
+                type:GET_PROJECTS,
+                payload:response.data.projects
+            })
+        } catch (error) {
+            console.log(error)
+        }
     }
-    const addProject = project => {
-        project.id= idRandom()
-        dispatch({
-            type:ADD_PROJECT,
-            payload:project
-        })
+    const addProject = async project => {
+
+        try {
+            const response = await clientAxios.post('/api/projects', project)
+            //Insert Porject on state
+            dispatch({
+                type:ADD_PROJECT,
+                payload:response.data
+            })
+        } catch (error) {
+            console.log(error)
+        }
     }
     //Show error of empty field on name field
     const showError=()=>{
